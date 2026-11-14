@@ -2,33 +2,70 @@
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Karjeras motivācija</title>
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+  <!-- Google fonti (latīņu + latviešu burti) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&subset=latin,latin-ext&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Karjeras motivācija</h1>
-  <p id="apraksts">Katrs lielais panākums sākas ar mazu soli.</p>
+  <header class="hero">
+    <p class="tag">&gt; sistēma.ielādēta_</p>
+    <h1>KARJERAS <span>MOTIVĀCIJA</span></h1>
+    <!-- JQUERY EFEKTS 1: rakstāmmašīnas teksts -->
+    <p class="typewriter"><span id="typed"></span><span class="cursor">█</span></p>
+    <a href="#soli" class="btn">Sākt ceļu</a>
+  </header>
 
-  <button id="padomuPoga">Rādīt / slēpt padomus</button>
-  <ul id="padomi">
-    <li>Izvirzi skaidru mērķi</li>
-    <li>Mācies katru dienu</li>
-    <li>Veido kontaktus</li>
-    <li>Neatmet, ja ir grūti</li>
-  </ul>
+  <main>
+    <!-- JQUERY EFEKTS 2: sekcijas parādās ritinot (slideDown + animate) -->
+    <section class="reveal">
+      <h2>Skaitļi, kas iedvesmo</h2>
+      <div class="grid">
+        <!-- JQUERY EFEKTS 3: animēti skaitļi (animate) -->
+        <div class="card"><strong class="count" data-to="85">0</strong><span>% uzlabo prasmes, mācoties katru dienu</span></div>
+        <div class="card"><strong class="count" data-to="10000">0</strong><span>stundas līdz meistarībai</span></div>
+        <div class="card"><strong class="count" data-to="5">0</strong><span>gadu plāns, kas maina dzīvi</span></div>
+      </div>
+    </section>
 
-  <div class="kartites">
-    <div class="kartite">Mērķis</div>
-    <div class="kartite">Darbs</div>
-    <div class="kartite">Panākumi</div>
-  </div>
+    <!-- JQUERY EFEKTS 4: akordeons (slideToggle) -->
+    <section class="reveal" id="soli">
+      <h2>Karjeras soļi</h2>
+      <div class="accordion">
+        <div class="item">
+          <button class="head">01 // Izvirzi mērķi</button>
+          <div class="body"><p>Uzraksti, kur vēlies būt pēc 5 gadiem. Skaidrs mērķis ir kā kompass.</p></div>
+        </div>
+        <div class="item">
+          <button class="head">02 // Mācies un praktizējies</button>
+          <div class="body"><p>Veido projektus, iegūsti pieredzi, mācies no kļūdām.</p></div>
+        </div>
+        <div class="item">
+          <button class="head">03 // Veido kontaktus</button>
+          <div class="body"><p>Iepazīsties ar profesionāļiem, apmeklē pasākumus, dalies zināšanās.</p></div>
+        </div>
+        <div class="item">
+          <button class="head">04 // Neapstājies</button>
+          <div class="body"><p>Karjera ir maratons. Rezultāts nāk tiem, kas neatmet.</p></div>
+        </div>
+      </div>
+    </section>
 
-  <h2>Mans progress</h2>
-  <div id="josla"><div id="progress"></div></div>
-  <button id="progressPoga">Palielināt progresu</button>
+    <!-- JQUERY EFEKTS 5: citātu maiņa (fadeOut / fadeIn) -->
+    <section class="reveal quote-box">
+      <h2>Dienas motivācija</h2>
+      <blockquote id="quote">Vienīgais veids, kā paveikt lielisku darbu, ir mīlēt to, ko dari.</blockquote>
+      <button class="btn" id="newQuote">Jauns citāts</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Karjeras motivācijas lapa</p>
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="script.js"></script>
