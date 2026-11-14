@@ -1,0 +1,73 @@
+body {
+  font-family: 'Fredoka', sans-serif;
+  /* saulrieta krāsu pāreja */
+  background: linear-gradient(to bottom right, #ff9a8b, #ff6a88, #ffcc70);
+  min-height: 100vh;
+  color: #3b1f2b;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 42px;
+  color: white;
+  display: none; /* jQuery to parādīs */
+}
+
+#apraksts {
+  font-size: 20px;
+  display: none; /* jQuery to parādīs */
+}
+
+button {
+  background-color: white;
+  color: #ff4d6d;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3b1f2b;
+  color: white;
+}
+
+#padomi {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+  display: none;
+}
+
+.kartites {
+  margin: 30px 0;
+}
+
+.kartite {
+  display: inline-block;
+  width: 120px;
+  padding: 30px 10px;
+  margin: 5px;
+  background-color: white;
+  border-radius: 15px;
+  font-size: 18px;
+}
+
+#josla {
+  width: 300px;
+  height: 20px;
+  margin: 10px auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  overflow: hidden; /* josla nevar iziet ārpus rāmja */
+}
+
+#progress {
+  width: 10%;
+  height: 20px;
+  background-color: #3b1f2b;
+}
