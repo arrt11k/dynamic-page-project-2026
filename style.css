@@ -1,73 +1,99 @@
+:root {
+  --bg: #0a0f14;
+  --panel: #111a22;
+  --line: #1e3a46;
+  --accent: #00ffc3;
+  --accent2: #ff9f1c;
+  --text: #cfe8ef;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  font-family: 'Fredoka', sans-serif;
-  /* saulrieta krāsu pāreja */
-  background: linear-gradient(to bottom right, #ff9a8b, #ff6a88, #ffcc70);
-  min-height: 100vh;
-  color: #3b1f2b;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 18px;
+  line-height: 1.6;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+h1, h2, .btn, .head, .card strong { font-family: 'Orbitron', sans-serif; }
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
-  margin: 0;
+  padding: 24px 16px;
+  background: radial-gradient(circle at center, rgba(0,255,195,.12), transparent 65%);
 }
 
-h1 {
-  font-size: 42px;
-  color: white;
-  display: none; /* jQuery to parādīs */
+.tag { color: var(--accent2); margin-bottom: 12px; }
+h1 { font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 900; letter-spacing: 3px; }
+h1 span { color: var(--accent); text-shadow: 0 0 18px var(--accent); }
+
+.typewriter { margin: 20px 0 32px; font-size: 1.2rem; min-height: 2em; }
+.cursor { color: var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .25s;
+}
+.btn:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px var(--accent); }
+
+main { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+section { margin: 80px 0; }
+h2 {
+  color: var(--accent2);
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  border-left: 5px solid var(--accent2);
+  padding-left: 14px;
 }
 
-#apraksts {
-  font-size: 20px;
-  display: none; /* jQuery to parādīs */
-}
+.reveal { display: none; }
 
-button {
-  background-color: white;
-  color: #ff4d6d;
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 22px; text-align: center; }
+.card strong { display: block; font-size: 2.6rem; color: var(--accent); }
+
+.accordion .item { border: 1px solid var(--line); background: var(--panel); margin-bottom: 10px; }
+.head {
+  width: 100%;
+  text-align: left;
+  background: none;
+  color: var(--text);
   border: none;
-  border-radius: 20px;
-  padding: 10px 24px;
-  font-family: inherit;
-  font-size: 16px;
+  padding: 16px 20px;
+  font-size: 1rem;
   cursor: pointer;
 }
+.head:hover, .item.open .head { color: var(--accent); }
+.body { display: none; padding: 0 20px 18px; }
 
-button:hover {
-  background-color: #3b1f2b;
-  color: white;
+.quote-box { text-align: center; }
+blockquote {
+  background: var(--panel);
+  border: 1px dashed var(--accent);
+  padding: 28px 20px;
+  margin-bottom: 24px;
+  font-size: 1.25rem;
 }
 
-#padomi {
-  list-style: none;
-  padding: 0;
-  font-size: 18px;
-  display: none;
-}
-
-.kartites {
-  margin: 30px 0;
-}
-
-.kartite {
-  display: inline-block;
-  width: 120px;
-  padding: 30px 10px;
-  margin: 5px;
-  background-color: white;
-  border-radius: 15px;
-  font-size: 18px;
-}
-
-#josla {
-  width: 300px;
-  height: 20px;
-  margin: 10px auto;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  overflow: hidden; /* josla nevar iziet ārpus rāmja */
-}
-
-#progress {
-  width: 10%;
-  height: 20px;
-  background-color: #3b1f2b;
-}
+footer { text-align: center; padding: 30px 16px; border-top: 1px solid var(--line); color: #6b8b96; }
