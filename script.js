@@ -1,28 +1,57 @@
-$(document).ready(function () {
+$(function () {
 
-  var progress = 10; // progresa josla sākas ar 10%
+  // EFEKTS 1: rakstāmmašīnas teksts
+  var text = 'Katrs lielais panākums sākas ar mazu soli.';
+  var i = 0;
+  (function type() {
+    if (i <= text.length) {
+      $('#typed').text(text.substring(0, i++));
+      setTimeout(type, 60);
+    }
+  })();
 
-  // 1. fadeIn - virsraksts parādās pakāpeniski
-  $("h1").fadeIn(2000);
+  // EFEKTS 2: sekcijas parādās ritinot (slideDown + animate)
+  function reveal() {
+    var bottom = $(window).scrollTop() + $(window).height() - 80;
+    $('.reveal:hidden').each(function () {
+      if ($(this).offset().top < bottom) {
+        $(this).css({ opacity: 0 }).slideDown(500).animate({ opacity: 1 }, 600);
+        // EFEKTS 3: skaitļi skaita līdz vērtībai
+        $(this).find('.count').each(function () {
+          var $n = $(this), to = +$n.data('to');
+          $({ v: 0 }).animate({ v: to }, {
+            duration: 1800,
+            step: function (now) { $n.text(Math.floor(now)); },
+            complete: function () { $n.text(to); }
+          });
+        });
+      }
+    });
+  }
+  $(window).on('scroll resize', reveal);
+  reveal();
 
-  // 2. slideDown - apraksts iebīdās pēc 1 sekundes
-  $("#apraksts").delay(1000).slideDown(1000);
-
-  // 3. slideToggle - padomu saraksts parādās / pazūd
-  $("#padomuPoga").click(function () {
-    $("#padomi").slideToggle();
+  // EFEKTS 4: akordeons (slideToggle)
+  $('.head').on('click', function () {
+    var $item = $(this).parent();
+    $('.item').not($item).removeClass('open').find('.body').slideUp(250);
+    $item.toggleClass('open').find('.body').slideToggle(300);
   });
 
-  // 4. fadeTo - kartīte kļūst caurspīdīga, kad uzbrauc ar peli
-  $(".kartite").hover(
-    function () { $(this).fadeTo("fast", 0.4); },
-    function () { $(this).fadeTo("fast", 1); }
-  );
-
-  // 5. animate - progresa josla pieaug
-  $("#progressPoga").click(function () {
-    progress = Math.min(progress + 10, 100); // nepārsniedz 100%
-    $("#progress").stop().animate({ width: progress + "%" }, 500);
+  // EFEKTS 5: citātu maiņa (fadeOut -> fadeIn)
+  var quotes = [
+    'Vienīgais veids, kā paveikt lielisku darbu, ir mīlēt to, ko dari.',
+    'Panākumi ir mazu pūļu summa, ko atkārto diena no dienas.',
+    'Nebaidies sākt no nulles – baidies nesākt vispār.',
+    'Tava karjera ir tavs stāsts. Raksti to pats.',
+    'Disciplīna šodien ir brīvība rīt.'
+  ];
+  $('#newQuote').on('click', function () {
+    var $q = $('#quote');
+    var next = quotes[Math.floor(Math.random() * quotes.length)];
+    $q.fadeOut(300, function () {
+      $q.text(next).fadeIn(400);
+    });
   });
 
 });
